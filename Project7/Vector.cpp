@@ -86,3 +86,10 @@ bool vector::operator==(const vector &obj) {
 	}
 	return true;
 }
+
+ostream& operator<<(ostream& os, vector v) {
+	for (int i = 0;i < v.size();i++) {
+		os << v[i] << "\t";
+	}
+	return os;
+}

@@ -1,4 +1,7 @@
 #pragma once
+#include<iostream>
+using namespace std;
+
 class vector {
 private:
 	int cur_size;
@@ -24,4 +27,8 @@ public:
 
 	bool operator==(const vector &obj);
 	~vector() { delete[]els; }
+
+	friend ostream& operator<<(ostream& os, vector v); //ostream - класс из библиотеки iostream; &- меняем поток и хотим сохранить изменения
+	                                                  //cout<<v
 };
+

@@ -38,48 +38,48 @@ vector vector:: operator=(const vector &obj) {//возврщаем объект
 	return *this;// this- указатель на текущий объект, *- разименование
 }
 
-	double& vector::push_back(double e) {
-		if (buf_size <= 0) {
-			buf_size = 2;
-			els = new double[buf_size];
-		}
-		else {
-			if (cur_size >= buf_size) {
-				buf_size *= 2;
-				double *tmp;
-				tmp = new double[size()];
-				for (int i = 0;i < size();i++) {
-					tmp[i] = els[i];
-				}
-				delete[]els;
-				els = tmp;
+double& vector::push_back(double e) {
+	if (buf_size <= 0) {
+		buf_size = 2;
+		els = new double[buf_size];
+	}
+	else {
+		if (cur_size >= buf_size) {
+			buf_size *= 2;
+			double *tmp;
+			tmp = new double[size()];
+			for (int i = 0; i < size(); i++) {
+				tmp[i] = els[i];
 			}
+			delete[]els;
+			els = tmp;
 		}
-		els[cur_size++] = e;
-		return els[cur_size - 1];
 	}
+	els[cur_size++] = e;
+	return els[cur_size - 1];
+}
 
-	double& vector::at(int index) {
-		if (index<0 || index>size())
-			return els[0];
-		else
-			return els[index];
-	}
+double& vector::at(int index) {
+	if (index<0 || index>size())
+		return els[0];
+	else
+		return els[index];
+}
 
-	double& vector::operator[](int index) //vector v,v.at(2)==v[2]
-	{
-		if (index<0 || index>size())
-			return els[0];
-		else
-			return els[index];
-	}
+double& vector::operator[](int index) //vector v,v.at(2)==v[2]
+{
+	if (index<0 || index>size())
+		return els[0];
+	else
+		return els[index];
+}
 
 // оператор сравнения
 bool vector::operator==(const vector &obj) {
 	if (this->cur_size != obj.size())
 		return false;
 	else {
-		for (int i = 0;i < size();i++) {
+		for (int i = 0; i < size(); i++) {
 			if (els[i] != obj.els[i])
 				return false;
 		}
@@ -88,8 +88,40 @@ bool vector::operator==(const vector &obj) {
 }
 
 ostream& operator<<(ostream& os, vector v) {
-	for (int i = 0;i < v.size();i++) {
+	for (int i = 0; i < v.size(); i++) {
 		os << v[i] << "\t";
 	}
 	return os;
 }
+
+vector vector:: operator+(const vector &obj)
+{
+	if (this->cur_size == obj.cur_size) {
+		for (int i = 0; i < cur_size; i++)
+		{
+			els[i] += obj.els[i];
+		}
+	}
+	return *this;
+}
+
+vector vector::operator-(const vector &obj) {
+	vector vNew;
+	
+	for (int i = 0; i < this->cur_size; i++) {
+		int count = 0;
+		for (int j = 0; j < obj.cur_size; j++) {
+			if (this->els[i] == obj.els[j])
+			{
+				count = 1;
+				break;
+			}
+		}
+		if (count == 0) {
+			vNew.push_back(this->els[i]);
+			
+		}
+	}
+	return vNew;
+}
+

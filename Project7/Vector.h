@@ -19,12 +19,13 @@ public:
 
 	//operators
 	vector operator=(const vector &obj);
-
+	vector operator+(const vector &obj);
+	vector operator-(const vector &obj);
 	// methods
 	double& push_back(double e); // возвращаем указатель
 	double& at(int index);
 	double& operator[](int index);
-
+	
 	bool operator==(const vector &obj);
 	~vector() { delete[]els; }
 

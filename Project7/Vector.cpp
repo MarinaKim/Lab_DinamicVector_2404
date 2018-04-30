@@ -59,6 +59,26 @@ double& vector::push_back(double e) {
 	return els[cur_size - 1];
 }
 
+vector vector:: operator >> (double e) {
+	if (buf_size <= 0) {
+		buf_size = 2;
+		els = new double[buf_size];
+	}
+	else {
+		if (cur_size >= buf_size) {
+			buf_size *= 2;
+			double *tmp;
+			tmp = new double[size()];
+			for (int i = 0; i < size(); i++) {
+				tmp[i] = els[i];
+			}
+			delete[]els;
+			els = tmp;
+		}
+	}
+	els[cur_size++] = e;
+	return *this;
+}
 double& vector::at(int index) {
 	if (index<0 || index>size())
 		return els[0];
@@ -72,6 +92,13 @@ double& vector::operator[](int index) //vector v,v.at(2)==v[2]
 		return els[0];
 	else
 		return els[index];
+}
+
+void vector::delPos(const int &pos)
+{
+	for (int i = pos - 1; i < cur_size; i++)
+		els[i] = els[i + 1];
+	cur_size--;
 }
 
 // оператор сравнения
@@ -116,6 +143,22 @@ vector vector:: operator+(const vector &obj)
 	}
 	return *this;
 }
+vector vector:: operator~() {
+	for (int i = 0; i < this->cur_size-1; i++) {
+		for (int j = i+1; j < this->cur_size; j++) {
+			if (this->els[i] == this->els[j]) {
+				this->delPos(i);
+					this->delPos(j);
+			}
+		}
+	}
+	return *this;
+}
+
+/*Оператор << удаляет из вектора элемент с индексом указанным в качестве второго операнда и возвращает удаленное значение*/
+double& vector::operator<<(int index) {
+
+}
 
 vector vector::operator-(const vector &obj) {
 	vector vNew;
@@ -136,4 +179,5 @@ vector vector::operator-(const vector &obj) {
 	cout << vNew << endl;
 	return vNew;
 }
+
 

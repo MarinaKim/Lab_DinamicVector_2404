@@ -22,13 +22,19 @@ public:
 	vector operator=(const vector &obj);
 	vector operator+(const vector &obj);
 	vector operator-(const vector &obj);
+	vector operator >> (double e);
+	vector operator~();
 	// methods
 	double& push_back(double e); // возвращаем указатель
 	double& at(int index);
 	double& operator[](int index);
-	
+	double& operator<<(int index);
+	void delPos(const int &pos);
+
 	bool operator==(const vector &obj);
 	bool operator!=(const vector &obj);
+
+
 	~vector() { delete[]els; }
 
 	friend ostream& operator<<(ostream& os, vector v); //ostream - класс из библиотеки iostream; &- меняем поток и хотим сохранить изменения

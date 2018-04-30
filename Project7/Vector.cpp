@@ -87,6 +87,18 @@ bool vector::operator==(const vector &obj) {
 	return true;
 }
 
+bool vector::operator!=(const vector &obj) {
+	if (this->cur_size != obj.size())
+		return false;
+	else {
+		for (int i = 0; i < size(); i++) {
+			if (els[i] != obj.els[i])
+				return false;
+		}
+	}
+	return true;
+}
+
 ostream& operator<<(ostream& os, vector v) {
 	for (int i = 0; i < v.size(); i++) {
 		os << v[i] << "\t";
@@ -118,10 +130,10 @@ vector vector::operator-(const vector &obj) {
 			}
 		}
 		if (count == 0) {
-			vNew.push_back(this->els[i]);
-			
+			vNew.push_back(els[i]);
 		}
-	}
+	}	
+	cout << vNew << endl;
 	return vNew;
 }
 

@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+
 using namespace std;
 
 class vector {
@@ -27,6 +28,7 @@ public:
 	double& operator[](int index);
 	
 	bool operator==(const vector &obj);
+	bool operator!=(const vector &obj);
 	~vector() { delete[]els; }
 
 	friend ostream& operator<<(ostream& os, vector v); //ostream - класс из библиотеки iostream; &- меняем поток и хотим сохранить изменения

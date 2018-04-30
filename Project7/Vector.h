@@ -36,8 +36,10 @@ public:
 
 
 	~vector() { delete[]els; }
-
+	
 	friend ostream& operator<<(ostream& os, vector v); //ostream - класс из библиотеки iostream; &- меняем поток и хотим сохранить изменения
 	                                                  //cout<<v
+
+	friend istream&  operator >> (istream& in, vector v);
 };
 

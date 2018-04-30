@@ -133,6 +133,13 @@ ostream& operator<<(ostream& os, vector v) {
 	return os;
 }
 
+istream&  operator >> (istream& in, vector v) {
+	for (int i = 0; i < v.size(); i++) {
+		in >> v[i] >> "\t";
+	}
+	return in;
+}
+
 vector vector:: operator+(const vector &obj)
 {
 	if (this->cur_size == obj.cur_size) {

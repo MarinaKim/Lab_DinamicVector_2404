@@ -50,6 +50,15 @@ int main() {
 		cout << (v1 >> 5.2) << endl;
 		cout << "------------------------------------------------------------------------" << endl;
 
+		//>>
+		cout << "<<" << endl;
+		cout << "Vector v1" << endl;
+		cout << v1 << endl;
+		cout << (v1 <<2) << endl;
+		cout << "Vector v1" << endl;
+		cout << v1 << endl;
+		cout << "------------------------------------------------------------------------" << endl;
+
 		//~
 		v1.push_back(5.2);
 		cout << "Vector v1" << endl;

@@ -157,7 +157,12 @@ vector vector:: operator~() {
 
 /*Оператор << удаляет из вектора элемент с индексом указанным в качестве второго операнда и возвращает удаленное значение*/
 double& vector::operator<<(int index) {
-
+	double e;
+	e = this->els[index];
+	for (int i = index; i < cur_size; i++)
+		els[i] = els[i + 1];
+		cur_size--;
+	return e;
 }
 
 vector vector::operator-(const vector &obj) {
